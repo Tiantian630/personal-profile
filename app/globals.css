@@ -678,3 +678,73 @@ html,body { max-width:100%; overflow-x:clip; }
   .bookuu-summary { padding-top:70px; }
   .bookuu-summary > p { font-size:19px; }
 }
+
+/* Personal AI comic case: a self-contained editorial layout. */
+.ai-comic-case .wrap { width:min(1200px,calc(100% - 80px)); }
+.ai-comic-case .section-header { display:block; margin:0 0 34px; }
+.ai-comic-case .section-header p { display:flex; flex-direction:column; align-items:flex-start; gap:12px; margin:0; color:var(--ink); font-size:clamp(40px,3.5vw,48px); font-weight:560; letter-spacing:-.055em; line-height:1.1; }
+.ai-comic-case .section-header p span { margin:0; color:var(--accent); font-size:13px; font-weight:700; letter-spacing:.1em; line-height:1; }
+.ai-comic-hero { display:grid; grid-template-columns:1.14fr .86fr; gap:clamp(40px,7vw,100px); align-items:center; padding-top:82px; padding-bottom:76px; }
+.ai-comic-hero-image { min-height:0; aspect-ratio:16 / 9; border-color:color-mix(in srgb,var(--line) 72%,white); background:#20201e; box-shadow:0 10px 26px rgb(37 38 34 / 3%); }
+.ai-comic-hero-image img { object-fit:cover; }
+.ai-comic-hero-copy h1 { max-width:560px; margin-bottom:20px; font-size:clamp(48px,5.7vw,78px); }
+.ai-comic-subtitle { margin:0; color:#4c4c46; font-size:19px; }
+.ai-comic-tags { display:flex; flex-wrap:wrap; gap:8px; margin:29px 0 35px; padding:0; list-style:none; }
+.ai-comic-tags li { padding:7px 11px; border:1px solid var(--line); color:var(--muted); font-size:13px; }
+.ai-comic-watch { display:inline-flex; align-items:center; gap:12px; padding-bottom:4px; border-bottom:1px solid var(--ink); font-size:14px; font-weight:650; transition:color .2s ease,border-color .2s ease; }
+.ai-comic-watch span { font-size:18px; line-height:1; }
+.ai-comic-watch:hover { border-color:var(--accent); color:var(--accent); }
+.ai-comic-introduction { display:grid; grid-template-columns:.86fr 1.14fr; column-gap:clamp(40px,7vw,100px); align-items:start; }
+.ai-comic-introduction .section-header { grid-column:1 / -1; }
+.ai-comic-introduction-copy { max-width:540px; padding-top:4px; }
+.ai-comic-introduction-copy p { margin:0; color:#4c4c46; font-size:20px; line-height:1.75; }
+.ai-comic-introduction-copy p + p { margin-top:20px; }
+.ai-comic-tool-list { border-top:1px solid var(--line); }
+.ai-comic-tool-list article { display:grid; grid-template-columns:120px minmax(0,1fr); gap:22px; padding:22px 0 25px; border-bottom:1px solid var(--line); }
+.ai-comic-tool-list h3 { margin:0; font-size:20px; font-weight:560; }
+.ai-comic-tool-list p { max-width:470px; margin:0; color:#4c4c46; line-height:1.65; }
+.ai-comic-assets-section .section-header { margin-bottom:38px; }
+.ai-comic-asset-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:24px; }
+.ai-comic-asset-grid figure { min-width:0; margin:0; }
+.ai-comic-asset-image { min-height:0; aspect-ratio:4 / 3; padding:10px; border-color:color-mix(in srgb,var(--line) 72%,white); background:#efeee8; box-shadow:0 8px 20px rgb(37 38 34 / 2.5%); }
+.ai-comic-asset-image img { position:relative; inset:auto; object-fit:contain; }
+.ai-comic-storyboard-grid .ai-comic-asset-image { aspect-ratio:16 / 9; padding:0; background:#1d1d1b; }
+.ai-comic-storyboard-grid .ai-comic-asset-image img { width:100%; height:100%; object-fit:cover; }
+.ai-comic-asset-grid figcaption { margin-top:11px; color:var(--muted); font-size:13px; }
+.ai-comic-section-note { max-width:790px; margin:30px 0 0; color:#4c4c46; font-size:18px; line-height:1.7; }
+.ai-comic-section-note strong { color:var(--ink); font-weight:600; }
+.ai-comic-work-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:24px; }
+.ai-comic-work-card { position:relative; display:block; overflow:hidden; background:#1d1d1b; color:var(--paper); }
+.ai-comic-work-image { min-height:0; aspect-ratio:16 / 9; border:0; background:#1d1d1b; }
+.ai-comic-work-image img { object-fit:cover; transition:transform .3s ease,filter .3s ease; }
+.ai-comic-work-card:after { position:absolute; inset:0; content:''; background:linear-gradient(180deg,#11111105 38%,#1111119c 100%); transition:background .3s ease; }
+.ai-comic-play { position:absolute; z-index:1; top:50%; left:50%; display:grid; width:58px; height:58px; place-items:center; border:1px solid #f5f4eecc; border-radius:50%; color:#f5f4ee; font-size:18px; transform:translate(-50%,-50%); transition:transform .25s ease,background .25s ease,color .25s ease; }
+.ai-comic-work-title { position:absolute; z-index:1; bottom:18px; left:20px; font-size:14px; font-weight:600; }
+.ai-comic-work-card:hover .ai-comic-work-image img { filter:brightness(.86); transform:scale(1.02); }
+.ai-comic-work-card:hover .ai-comic-play { background:#f5f4ee; color:#252622; transform:translate(-50%,-50%) scale(1.07); }
+.ai-comic-back a { display:inline-flex; gap:11px; align-items:center; font-size:14px; font-weight:650; }
+.ai-comic-back a span { font-size:18px; line-height:1; }
+.ai-comic-case .contact .button span { display:none; }
+@media (prefers-reduced-motion:reduce) {
+  .ai-comic-watch,.ai-comic-work-image img,.ai-comic-work-card:after,.ai-comic-play { transition:none; }
+  .ai-comic-work-card:hover .ai-comic-work-image img { transform:none; }
+  .ai-comic-work-card:hover .ai-comic-play { transform:translate(-50%,-50%); }
+}
+@media (max-width:760px) {
+  .ai-comic-case .wrap { width:min(1200px,calc(100% - 40px)); }
+  .ai-comic-case .section-header { margin-bottom:30px; }
+  .ai-comic-hero,.ai-comic-introduction { grid-template-columns:1fr; gap:30px; }
+  .ai-comic-hero { padding-top:68px; padding-bottom:54px; }
+  .ai-comic-hero-image { order:-1; }
+  .ai-comic-hero-copy h1 { font-size:50px; }
+  .ai-comic-subtitle { font-size:16px; }
+  .ai-comic-tags { margin:24px 0 30px; }
+  .ai-comic-introduction-copy { max-width:none; }
+  .ai-comic-introduction-copy p { font-size:19px; }
+  .ai-comic-tool-list article { grid-template-columns:1fr; gap:7px; padding:20px 0 23px; }
+  .ai-comic-asset-grid,.ai-comic-work-grid { grid-template-columns:1fr; gap:20px; }
+  .ai-comic-assets-section .section-header { margin-bottom:30px; }
+  .ai-comic-asset-image { padding:7px; }
+  .ai-comic-storyboard-grid .ai-comic-asset-image { padding:0; }
+  .ai-comic-section-note { margin-top:24px; font-size:17px; }
+}
