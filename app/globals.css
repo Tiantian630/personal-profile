@@ -222,9 +222,15 @@
 }
 
 /* Kitchen page: headline and section hierarchy. */
-.kitchen-hero { padding-top:82px; padding-bottom:62px; }
-.kitchen-hero-intro { max-width:680px; margin-top:28px; font-size:clamp(32px,2.5vw,36px); line-height:1.5; }
-.kitchen-hero .case-role { margin-top:48px; }
+.kitchen-hero { display:grid; grid-template-columns:.86fr 1.14fr; gap:clamp(40px,7vw,100px); align-items:center; padding-top:82px; padding-bottom:76px; }
+.kitchen-hero h1 { max-width:620px; margin-bottom:24px; font-size:clamp(48px,5.7vw,78px); }
+.kitchen-hero .case-company { margin:0; font-size:17px; }
+.kitchen-hero-intro { max-width:500px; margin:28px 0 0; color:#4c4c46; font-size:20px; line-height:1.7; letter-spacing:-.02em; }
+.kitchen-hero-intro p { margin:0; }
+.kitchen-hero-intro p + p { margin-top:14px; }
+.kitchen-hero .case-role { max-width:100%; margin-top:42px; }
+.kitchen-hero-image { min-height:0; aspect-ratio:4 / 3; border-color:color-mix(in srgb,var(--line) 72%,white); background:#efeee8; box-shadow:0 10px 26px rgb(37 38 34 / 3%); }
+.kitchen-hero-image img { object-fit:cover; }
 .kitchen-case .section-header { margin-bottom:34px; }
 .kitchen-case .section-header p { display:flex; flex-direction:column; align-items:flex-start; gap:12px; color:var(--ink); font-size:clamp(40px,3.5vw,48px); font-weight:560; letter-spacing:-.055em; line-height:1.1; }
 .kitchen-case .section-header p span { margin:0; color:var(--accent); font-size:13px; font-weight:700; letter-spacing:.1em; line-height:1; }
@@ -235,9 +241,11 @@
 .kitchen-intro-copy > p + p { margin-top:24px; }
 .kitchen-intro-copy .kitchen-intro-label { margin-bottom:20px; color:var(--accent); font-size:13px; font-weight:700; letter-spacing:.09em; }
 @media (max-width:760px) {
-  .kitchen-hero { padding-top:68px; padding-bottom:52px; }
-  .kitchen-hero-intro { max-width:100%; margin-top:24px; font-size:28px; line-height:1.5; }
-  .kitchen-hero .case-role { margin-top:38px; }
+  .kitchen-hero { grid-template-columns:1fr; gap:30px; padding-top:68px; padding-bottom:54px; }
+  .kitchen-hero-image { order:-1; }
+  .kitchen-hero h1 { font-size:50px; }
+  .kitchen-hero-intro { max-width:100%; margin-top:24px; font-size:19px; line-height:1.7; }
+  .kitchen-hero .case-role { margin-top:34px; }
   .kitchen-case .section-header { margin-bottom:28px; }
   .kitchen-case .section-header p { gap:10px; font-size:38px; }
   .kitchen-overview { padding-top:60px; }
