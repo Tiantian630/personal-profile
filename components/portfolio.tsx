@@ -74,6 +74,45 @@ export function SectionHeader({
     </header>
   );
 }
+
+function EnterpriseCaseHero({
+  number,
+  title,
+  category,
+  company,
+  outcome,
+  image,
+  imageAlt,
+}: {
+  number: string;
+  title: string;
+  category: string;
+  company: string;
+  outcome: string;
+  image: string;
+  imageAlt: string;
+}) {
+  return (
+    <section className="case-hero wrap enterprise-case-hero">
+      <div className="enterprise-case-hero-copy">
+        <p className="eyebrow">项目案例 {number}</p>
+        <h1>{title}</h1>
+        <p className="enterprise-case-hero-tags">{category}</p>
+        <p className="case-company">{company}</p>
+        <div className="case-role">
+          <span>核心成果</span>
+          <p>{outcome}</p>
+        </div>
+      </div>
+      <ImageWithFallback
+        src={image}
+        alt={imageAlt}
+        label={`${company}项目主视觉`}
+        className="enterprise-case-hero-image"
+      />
+    </section>
+  );
+}
 export function Metrics({
   metrics,
   isHome = false,
@@ -450,16 +489,15 @@ function ZnoCasePage() {
     <>
       <Header />
       <main className="case-page zno-case">
-        <section className="case-hero wrap zno-hero">
-          <p className="eyebrow">项目案例 01</p>
-          <h1>海外 SEO 与内容增长</h1>
-          <p className="case-company">上海寸心科技</p>
-          <p className="case-subtitle">海外 SaaS · 北美市场</p>
-          <div className="case-role">
-            <span>项目角色</span>
-            <p>英文内容策划 / SEO / Blog / 海外社媒</p>
-          </div>
-        </section>
+        <EnterpriseCaseHero
+          number="01"
+          title="企业内容增长与 SEO 优化"
+          category="SEO优化 · 内容策略 · 企业增长"
+          company="寸心科技"
+          outcome="SEO内容体系搭建与搜索增长优化"
+          image="/assets/home/zno-cover.webp"
+          imageAlt="寸心科技企业内容增长与搜索优化项目主视觉"
+        />
         <section className="wrap zno-overview">
           <SectionHeader number="01" label="项目概览" />
           <div className="zno-overview-grid">
@@ -659,22 +697,15 @@ function FoxDataCasePage() {
     <>
       <Header />
       <main className="case-page foxdata-case">
-        <section className="case-hero wrap foxdata-hero">
-          <p className="eyebrow">项目案例 02</p>
-          <h1>B2B SaaS 内容运营与专业内容资产</h1>
-          <p className="foxdata-hero-intro">
-            围绕 App 开发者和增长团队，
-            <br />
-            通过行业研究、ASO 内容和产品教育内容，
-            <br />
-            建立帮助用户理解产品价值的专业内容体系。
-          </p>
-          <div className="case-role">
-            <span>项目角色</span>
-            <p>内容策划 / 行业研究 / 专业内容撰写 / 产品教育内容</p>
-          </div>
-          <p className="foxdata-project-owner">项目主体 · FoxData 灵狐数据</p>
-        </section>
+        <EnterpriseCaseHero
+          number="02"
+          title="海外内容运营与品牌增长"
+          category="海外内容 · 社媒运营 · B2B营销"
+          company="FoxData"
+          outcome="面向海外市场的内容体系搭建与品牌传播"
+          image="/assets/home/foxdata-cover.webp"
+          imageAlt="FoxData 海外内容运营与品牌增长项目主视觉"
+        />
         <section className="wrap foxdata-overview">
           <SectionHeader number="01" label="项目概览" />
           <div className="foxdata-product-context">
@@ -854,24 +885,15 @@ function PetVideoCasePage() {
     <>
       <Header />
       <main className="case-page pet-video-case">
-        <section className="case-hero wrap pet-video-hero">
-          <p className="eyebrow">项目案例 03</p>
-          <h1>宠物消费品牌内容增长与 UGC 运营</h1>
-          <p className="pet-video-hero-intro">
-            通过宠物知识内容、商品内容、短视频生产与用户共创，
-            <br />
-            帮助宠物消费品牌建立内容增长体系，实现品牌认知、
-            <br />
-            用户互动与交易转化。
-          </p>
-          <div className="case-role">
-            <span>项目角色</span>
-            <p>内容运营 / 内容策划</p>
-          </div>
-          <p className="pet-video-project-owner">
-            项目主体 · 杭州易宠科技有限公司
-          </p>
-        </section>
+        <EnterpriseCaseHero
+          number="03"
+          title="宠物消费品牌内容增长与用户运营"
+          category="内容运营 · 短视频 · 用户增长"
+          company="杭州易宠科技"
+          outcome="宠物行业内容矩阵搭建与用户互动增长"
+          image="/assets/home/pet-cover.webp"
+          imageAlt="杭州易宠科技宠物消费品牌内容增长项目主视觉"
+        />
         <section className="wrap pet-video-overview">
           <SectionHeader number="01" label="项目概览" />
           <div className="pet-video-overview-grid">
