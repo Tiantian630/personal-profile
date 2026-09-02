@@ -596,3 +596,66 @@ html,body { max-width:100%; overflow-x:clip; }
   .home-contact .contact-details { display:grid; gap:4px; }
   .home-contact .actions { margin-top:28px; }
 }
+
+/* Bookuu: editorial social-content case study. */
+.bookuu-case .wrap { width:min(1200px,calc(100% - 80px)); }
+.bookuu-case .section-header { display:block; margin:0 0 34px; }
+.bookuu-case .section-header p { display:flex; flex-direction:column; align-items:flex-start; gap:12px; margin:0; color:var(--ink); font-size:clamp(40px,3.5vw,48px); font-weight:560; letter-spacing:-.055em; line-height:1.1; }
+.bookuu-case .section-header p span { margin:0; color:var(--accent); font-size:13px; font-weight:700; letter-spacing:.1em; line-height:1; }
+.bookuu-hero { display:grid; grid-template-columns:.86fr 1.14fr; gap:clamp(40px,7vw,100px); align-items:center; padding-top:82px; padding-bottom:76px; }
+.bookuu-hero h1 { max-width:620px; margin-bottom:24px; font-size:clamp(48px,5.7vw,78px); }
+.bookuu-hero-tags { margin:0 0 11px; color:#464640; font-size:19px; }
+.bookuu-hero .case-company { margin:0; font-size:17px; }
+.bookuu-hero .case-role { max-width:100%; margin-top:42px; }
+.bookuu-hero .case-role p { display:flex; flex-wrap:wrap; align-items:baseline; gap:10px; }
+.bookuu-hero .case-role strong { font-size:clamp(28px,3vw,40px); font-weight:560; letter-spacing:-.05em; }
+.bookuu-hero-image { min-height:0; aspect-ratio:4 / 3; border-color:color-mix(in srgb,var(--line) 72%,white); background:#efeee8; box-shadow:0 10px 26px rgb(37 38 34 / 3%); }
+.bookuu-hero-image img { object-fit:cover; }
+.bookuu-background { display:grid; grid-template-columns:.86fr 1.14fr; column-gap:clamp(40px,7vw,100px); align-items:start; }
+.bookuu-background .section-header { grid-column:1 / -1; }
+.bookuu-background-copy { max-width:500px; padding-top:4px; }
+.bookuu-background-copy h3,.bookuu-anniversary-copy h3 { margin:0 0 18px; font-size:clamp(28px,3vw,42px); font-weight:550; }
+.bookuu-background-copy > p:not(.article-index),.bookuu-anniversary-copy > p:not(.article-index) { margin-bottom:17px; color:#4c4c46; line-height:1.7; }
+.bookuu-context-media { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:18px; }
+.bookuu-context-image { min-height:0; aspect-ratio:9 / 16; padding:10px; border-color:color-mix(in srgb,var(--line) 72%,white); background:#efeee8; }
+.bookuu-context-image img,.bookuu-anniversary-image img { position:relative; inset:auto; object-fit:contain; }
+.bookuu-strategy-list { border-top:1px solid var(--line); }
+.bookuu-strategy-list article { display:grid; grid-template-columns:104px minmax(0,1fr); gap:24px; padding:28px 0 31px; border-bottom:1px solid var(--line); }
+.bookuu-strategy-list article > span,.bookuu-responsibility-list article > span { color:var(--accent); font-size:13px; font-weight:700; letter-spacing:.1em; }
+.bookuu-strategy-list h3 { margin:0 0 9px; font-size:25px; font-weight:560; }
+.bookuu-strategy-list p,.bookuu-responsibility-list p { max-width:700px; margin:0; color:#4c4c46; line-height:1.65; }
+.bookuu-anniversary { display:grid; grid-template-columns:.86fr 1.14fr; gap:clamp(40px,7vw,100px); align-items:center; }
+.bookuu-anniversary-image { min-height:0; aspect-ratio:9 / 16; max-height:680px; padding:12px; border-color:color-mix(in srgb,var(--line) 72%,white); background:#151515; }
+.bookuu-anniversary-copy { max-width:560px; }
+.bookuu-video-metrics { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:0; margin:38px 0 0; border-top:1px solid var(--line); }
+.bookuu-video-metrics div { min-height:118px; padding:19px 16px 18px 0; border-bottom:1px solid var(--line); }
+.bookuu-video-metrics div:nth-child(2n) { padding-left:16px; border-left:1px solid var(--line); }
+.bookuu-video-metrics dt { font-size:clamp(28px,3vw,42px); font-weight:560; letter-spacing:-.06em; }
+.bookuu-video-metrics dd { margin:5px 0 0; color:var(--muted); font-size:14px; }
+.bookuu-responsibility-list { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:0 46px; border-top:1px solid var(--line); }
+.bookuu-responsibility-list article { display:grid; grid-template-columns:58px minmax(0,1fr); column-gap:14px; padding:24px 0 28px; border-bottom:1px solid var(--line); }
+.bookuu-responsibility-list h3 { grid-column:2; margin:0 0 8px; font-size:22px; font-weight:560; }
+.bookuu-responsibility-list p { grid-column:2; }
+.bookuu-responsibility-list article > span { grid-row:1 / span 2; }
+.bookuu-summary { padding-top:105px; }
+.bookuu-summary > p { max-width:790px; margin:0; font-size:20px; line-height:1.7; }
+@media (max-width:760px) {
+  .bookuu-case .wrap { width:min(1200px,calc(100% - 40px)); }
+  .bookuu-case .section-header { margin-bottom:30px; }
+  .bookuu-hero,.bookuu-background,.bookuu-anniversary { grid-template-columns:1fr; gap:30px; }
+  .bookuu-hero { padding-top:68px; padding-bottom:54px; }
+  .bookuu-hero h1 { font-size:50px; }
+  .bookuu-hero-image { order:-1; }
+  .bookuu-hero .case-role { margin-top:34px; }
+  .bookuu-background-copy { max-width:none; }
+  .bookuu-context-media { gap:12px; }
+  .bookuu-context-image { padding:7px; }
+  .bookuu-strategy-list article { grid-template-columns:1fr; gap:8px; padding:22px 0 25px; }
+  .bookuu-strategy-list h3 { font-size:22px; }
+  .bookuu-anniversary-image { max-height:none; padding:8px; }
+  .bookuu-video-metrics { margin-top:30px; }
+  .bookuu-video-metrics div { min-height:101px; }
+  .bookuu-responsibility-list { grid-template-columns:1fr; }
+  .bookuu-summary { padding-top:70px; }
+  .bookuu-summary > p { font-size:19px; }
+}

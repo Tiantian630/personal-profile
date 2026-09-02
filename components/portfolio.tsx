@@ -1016,10 +1016,115 @@ function PetVideoCasePage() {
   );
 }
 
+function BookuuCasePage() {
+  const strategy = [
+    ['01', '日常内容运营', '围绕图书推荐、作者内容、阅读场景等方向持续输出，提高账号活跃度和用户关注。'],
+    ['02', '节点活动策划', '围绕周年庆等品牌节点设计主题内容，通过活动氛围、品牌故事和用户互动增强传播效果。'],
+    ['03', '短视频内容运营', '结合人物采访、品牌故事等形式，提高内容表现力和用户停留。'],
+  ];
+
+  const responsibilities = [
+    ['内容策划', '负责微博选题规划、内容方向制定。'],
+    ['活动运营', '参与周年庆节点策划与传播方案设计。'],
+    ['短视频策划', '负责视频主题、脚本方向和内容优化。'],
+    ['数据复盘', '根据用户反馈和传播效果调整内容策略。'],
+  ];
+
+  return (
+    <>
+      <Header />
+      <main className="case-page bookuu-case">
+        <section className="case-hero wrap bookuu-hero">
+          <div className="bookuu-hero-copy">
+            <p className="eyebrow">项目案例 04</p>
+            <h1>品牌微博与周年庆内容营销</h1>
+            <p className="bookuu-hero-tags">微博运营 · 活动策划 · 短视频</p>
+            <p className="case-company">博库网络</p>
+            <div className="case-role">
+              <span>核心成果</span>
+              <p><strong>6.5万+</strong>周年庆视频播放量</p>
+            </div>
+          </div>
+          <ImageWithFallback
+            src="/assets/home/bookku-cover.webp"
+            alt="博库网络品牌微博与周年庆内容营销项目主视觉"
+            label="博库项目主视觉"
+            className="bookuu-hero-image"
+          />
+        </section>
+
+        <section className="wrap section-block bookuu-background">
+          <SectionHeader number="01" label="项目背景" />
+          <div className="bookuu-background-copy">
+            <p className="article-index">从电商账号到品牌内容阵地</p>
+            <h3>以社交内容持续连接读者与品牌</h3>
+            <p>博库作为综合图书电商平台，需要通过社交媒体内容持续连接用户，提高品牌曝光与用户互动。</p>
+            <p>项目围绕微博日常运营、内容策划以及周年庆节点营销展开，通过图文、短视频等形式增强品牌传播。</p>
+          </div>
+          <div className="bookuu-context-media">
+            <ImageWithFallback src="/assets/bookuu/bookuu-store.jpg" alt="博库天猫店铺截图" label="博库天猫店铺" className="bookuu-context-image" />
+            <ImageWithFallback src="/assets/bookuu/bookuu-weibo.jpg" alt="博库微博主页截图" label="博库微博主页" className="bookuu-context-image" />
+          </div>
+        </section>
+
+        <section className="wrap section-block">
+          <SectionHeader number="02" label="内容运营策略" />
+          <div className="bookuu-strategy-list">
+            {strategy.map(([number, title, detail]) => (
+              <article key={number}>
+                <span>{number}</span>
+                <div><h3>{title}</h3><p>{detail}</p></div>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="wrap section-block">
+          <SectionHeader number="03" label="周年庆案例" />
+          <article className="bookuu-anniversary">
+            <ImageWithFallback src="/assets/bookuu/bookuu-anniversary-video.jpg" alt="博库周年庆主题视频数据截图" label="周年庆主题视频" className="bookuu-anniversary-image" />
+            <div className="bookuu-anniversary-copy">
+              <p className="article-index">周年庆主题视频</p>
+              <h3>用人物内容放大品牌节点传播</h3>
+              <p>围绕博库周年庆，以作者祝福与品牌故事为内容线索，策划并优化短视频表达，为节点传播建立更具停留感的内容入口。</p>
+              <dl className="bookuu-video-metrics">
+                <div><dt>6.5万+</dt><dd>播放量</dd></div>
+                <div><dt>591</dt><dd>点赞</dd></div>
+                <div><dt>113</dt><dd>评论</dd></div>
+                <div><dt>9</dt><dd>分享</dd></div>
+              </dl>
+            </div>
+          </article>
+        </section>
+
+        <section className="wrap section-block">
+          <SectionHeader number="04" label="我的工作内容" />
+          <div className="bookuu-responsibility-list">
+            {responsibilities.map(([title, detail], index) => (
+              <article key={title}>
+                <span>0{index + 1}</span><h3>{title}</h3><p>{detail}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="wrap bookuu-summary">
+          <SectionHeader number="05" label="项目总结" />
+          <p>通过持续内容运营与节点营销，帮助品牌提升社交媒体影响力，并建立更加稳定的用户沟通渠道。</p>
+        </section>
+        <div className="wrap case-back"><a href="/#projects">← 返回精选项目</a></div>
+        <Contact language="zh" />
+      </main>
+      <Footer language="zh" />
+    </>
+  );
+}
+
 export function CasePage({ project }: { project: Project }) {
   if (project.slug === 'zno-seo') return <ZnoCasePage />;
   if (project.slug === 'foxdata') return <FoxDataCasePage />;
   if (project.slug === 'pet-video') return <PetVideoCasePage />;
+  if (project.slug === 'bookuu') return <BookuuCasePage />;
   return (
     <>
       <Header />
