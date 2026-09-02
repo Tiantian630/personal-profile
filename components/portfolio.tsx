@@ -1,13 +1,27 @@
 import { ImageWithFallback } from '@/components/image-with-fallback';
 import { LazyVideoPreview } from '@/components/lazy-video-preview';
 import { projects, type Project } from '@/components/projects-data';
-import {
-  BOOKING_PROJECT_URL,
-  DOUYIN_FEATURED_VIDEO_URL,
-  DOUYIN_PROFILE_URL,
-  TIANTIAN_KITCHEN_URL,
-} from '@/components/aigc-data';
-import { RESUME_PDF_PATH } from '@/components/site-config';
+import { BOOKING_PROJECT_URL } from '@/components/aigc-data';
+import { RESUME_FILE_NAME, RESUME_PDF_PATH } from '@/components/site-config';
+
+const homeProjectCovers: Record<string, { src: string; alt: string }> = {
+  'zno-seo': {
+    src: '/assets/home/zno-cover.webp',
+    alt: '寸心科技海外搜索优化与内容增长项目封面',
+  },
+  foxdata: {
+    src: '/assets/home/foxdata-cover.webp',
+    alt: 'FoxData 灵狐数据专业内容资产项目封面',
+  },
+  'pet-video': {
+    src: '/assets/home/pet-cover.webp',
+    alt: '杭州易宠科技宠物消费品牌内容增长项目封面',
+  },
+  bookuu: {
+    src: '/assets/home/bookku-cover.webp',
+    alt: '博库网络周年庆内容营销项目封面',
+  },
+};
 
 export function Header() {
   return (
@@ -20,7 +34,7 @@ export function Header() {
           <a href="/">首页</a>
           <a href="/#projects">精选项目</a>
           <a href="/#projects-personal">个人项目</a>
-          <a href={RESUME_PDF_PATH} download>
+          <a href={RESUME_PDF_PATH} download={RESUME_FILE_NAME}>
             简历
           </a>
           <a href="/#contact">联系我</a>
@@ -31,7 +45,7 @@ export function Header() {
             <a href="/">首页</a>
             <a href="/#projects">精选项目</a>
             <a href="/#projects-personal">个人项目</a>
-            <a href={RESUME_PDF_PATH} download>
+            <a href={RESUME_PDF_PATH} download={RESUME_FILE_NAME}>
               简历
             </a>
             <a href="/#contact">联系我</a>
@@ -62,18 +76,27 @@ export function SectionHeader({
 }
 export function Metrics({
   metrics,
+  isHome = false,
 }: {
   metrics?: { value: string; label: string }[];
+  isHome?: boolean;
 }) {
-  const items = metrics ?? [
-    { value: '+655%', label: '短视频曝光同比增长' },
-    { value: '+97%', label: '短视频成交金额同比增长' },
-    { value: '0 → 1,000+', label: 'Blog 自然访问量 / 3个月' },
-    { value: '150%', label: '微博粉丝增长 KPI 完成率' },
-  ];
+  const items = metrics ?? (isHome
+    ? [
+        { value: '+655%', label: '短视频曝光同比增长' },
+        { value: '+97%', label: '短视频成交金额同比增长' },
+        { value: '0 → 1,000+', label: '3个月博客自然访问量' },
+        { value: '150%', label: '微博粉丝增长目标完成率' },
+      ]
+    : [
+        { value: '+655%', label: '短视频曝光同比增长' },
+        { value: '+97%', label: '短视频成交金额同比增长' },
+        { value: '0 → 1,000+', label: 'Blog 自然访问量 / 3个月' },
+        { value: '150%', label: '微博粉丝增长 KPI 完成率' },
+      ]);
   return (
-    <section className="metrics-wrap wrap" data-reveal>
-      <SectionHeader number="02" label="SELECTED METRICS" title="核心数据" />
+    <section className={`metrics-wrap wrap${isHome ? ' home-metrics' : ''}`} data-reveal>
+      <SectionHeader number="02" label={isHome ? '数据概览' : 'SELECTED METRICS'} title="核心数据" />
       <div className="metrics">
         {items.map((item) => (
           <div className="metric" key={`${item.value}-${item.label}`}>
@@ -86,12 +109,36 @@ export function Metrics({
   );
 }
 export function HomeProjects() {
+  const homeProjectCopy: Record<
+    string,
+    Pick<Project, 'title' | 'keywords' | 'result'>
+  > = {
+    'zno-seo': {
+      title: '海外搜索优化与内容增长',
+      keywords: ['英文内容', '搜索优化', '海外社媒'],
+      result: '3个月博客自然访问量 0 → 1,000+',
+    },
+    foxdata: {
+      title: '企业服务内容与专业内容资产',
+      keywords: ['公众号', '行业研究', '应用商店优化指南'],
+      result: '44页应用商店优化专业指南',
+    },
+    'pet-video': {
+      title: '宠物消费品牌内容增长与用户共创运营',
+      keywords: ['内容策略', '短视频', '用户共创运营'],
+      result: '短视频曝光同比 +655%',
+    },
+  };
+
   return (
     <section className="projects wrap" id="projects" data-reveal>
-      <SectionHeader number="03" label="SELECTED WORK" title="精选项目" />
+      <SectionHeader number="03" label="项目案例" title="精选项目" />
       <div className="project-list">
         {projects.map((project) => (
-          <ProjectCard project={project} key={project.slug} />
+          <ProjectCard
+            project={{ ...project, ...homeProjectCopy[project.slug] }}
+            key={project.slug}
+          />
         ))}
       </div>
     </section>
@@ -101,29 +148,29 @@ export function HomeProjects() {
 export function AigcProject() {
   return (
     <section className="aigc-project wrap" id="projects-personal" data-reveal>
-      <SectionHeader number="04" label="PERSONAL PROJECTS" title="个人项目" />
+      <SectionHeader number="04" label="个人项目" title="人工智能个人项目" />
       <article className="aigc-feature">
-        <p className="eyebrow">01 · AIGC CONTENT PRACTICE</p>
-        <h3>AIGC 内容实践</h3>
+        <p className="eyebrow">01 · 人工智能漫剧内容实践</p>
+        <h3>人工智能内容实践</h3>
         <p className="aigc-subtitle">
-          从创意策划、剧本、分镜到 AI 视觉与视频生成的完整内容实践
+          从创意策划、剧本、分镜到人工智能视觉与视频生成的完整内容实践
         </p>
         <div className="aigc-layout">
           <a
-            className="featured-cover"
-            href={DOUYIN_FEATURED_VIDEO_URL}
-            target="_blank"
-            rel="noreferrer"
-            aria-label="在抖音观看代表作品（链接占位）"
+            className="featured-cover featured-cover-artwork"
+            href="/ai-practice"
+            aria-label="查看人工智能漫剧项目详情"
           >
-            <span className="cover-label">代表作品封面 placeholder</span>
-            <span className="cover-play">▶</span>
-            <span className="cover-watch">在抖音观看 ↗</span>
+            <img
+              src="/assets/home/aigc-feature-cover.webp"
+              alt="《我救了三年后刀了我的男人们》人工智能漫剧代表作品封面"
+              loading="lazy"
+            />
           </a>
           <div className="aigc-copy">
-            <p className="eyebrow">FEATURED WORK</p>
-            <h4>代表作品｜《作品名称 placeholder》</h4>
-            <p className="aigc-meta">AI漫剧 · 3D动画 · 女频内容</p>
+            <p className="eyebrow">代表作品</p>
+            <h4>代表作品｜《我救了三年后刀了我的男人们》</h4>
+            <p className="aigc-meta">人工智能漫剧 · 三维动画 · 女性向内容</p>
             <ul className="skill-list aigc-skills">
               {[
                 '创意策划',
@@ -131,7 +178,7 @@ export function AigcProject() {
                 '分镜',
                 '角色资产',
                 '场景资产',
-                'AI视觉',
+                '人工智能视觉',
                 '视频剪辑',
               ].map((skill) => (
                 <li key={skill}>{skill}</li>
@@ -140,14 +187,6 @@ export function AigcProject() {
             <div className="aigc-actions">
               <a className="arrow-link" href="/ai-practice">
                 查看项目详情 <span>→</span>
-              </a>
-              <a
-                className="arrow-link"
-                href={DOUYIN_PROFILE_URL}
-                target="_blank"
-                rel="noreferrer"
-              >
-                立即查看全部 <span>↗</span>
               </a>
             </div>
           </div>
@@ -165,20 +204,12 @@ export function KitchenProject() {
   return (
     <article className="booking-project secondary-project">
       <div className="booking-copy">
-        <p className="eyebrow">02 · AI-ASSISTED LIFESTYLE CONTENT PRODUCT</p>
+        <p className="eyebrow">02 · 个人生活内容工具</p>
         <h3>甜甜私房菜</h3>
-        <p className="project-kind">AI辅助生活内容产品</p>
         <p>
-          基于日常做饭、菜谱整理与食材管理需求，使用 AI
+          基于日常做饭、菜谱整理与食材管理需求，使用人工智能
           辅助完成从需求梳理、内容结构设计到功能迭代，搭建个人菜谱与家庭食材管理工具。
         </p>
-        <ul className="skill-list compact-skills">
-          {['需求梳理', '信息架构', '内容整理', 'AI辅助开发', '测试迭代'].map(
-            (item) => (
-              <li key={item}>{item}</li>
-            ),
-          )}
-        </ul>
         <p className="booking-work">
           菜谱管理 · 每日推荐 · 收藏 · 采购清单 · 冰箱食材 · 多设备同步
         </p>
@@ -187,7 +218,7 @@ export function KitchenProject() {
             查看项目详情 <span>→</span>
           </a>
           <a
-            href={TIANTIAN_KITCHEN_URL}
+            href="https://www.workbuddy.link/p/4V4IqngDAiaNDyJhGjPjf7"
             target="_blank"
             rel="noreferrer"
             className="arrow-link"
@@ -196,25 +227,15 @@ export function KitchenProject() {
           </a>
         </div>
       </div>
-      <div className="booking-gallery">
-        <ImageWithFallback
-          src="/assets/kitchen/kitchen-home.webp"
-          alt="甜甜私房菜产品首页与每日推荐"
-          label="产品首页 / 每日推荐"
-          className="booking-main"
-        />
-        <ImageWithFallback
-          src="/assets/kitchen/kitchen-recipes.webp"
-          alt="甜甜私房菜菜谱浏览与管理页面"
-          label="菜谱浏览 / 菜谱管理"
-          className="booking-small"
-        />
-        <ImageWithFallback
-          src="/assets/kitchen/kitchen-shopping.webp"
-          alt="甜甜私房菜采购清单与冰箱食材管理页面"
-          label="采购清单 / 冰箱食材"
-          className="booking-small"
-        />
+      <div className="booking-gallery booking-gallery--single">
+        <a href="/kitchen" aria-label="查看甜甜私房菜项目详情">
+          <ImageWithFallback
+            src="/assets/home/kitchen-home-cover.webp"
+            alt="甜甜私房菜首页"
+            label="甜甜私房菜首页"
+            className="booking-main"
+          />
+        </a>
       </div>
     </article>
   );
@@ -224,47 +245,37 @@ export function BookingProject() {
   return (
     <article className="booking-project secondary-project">
       <div className="booking-copy">
-        <p className="eyebrow">03 · AI-ASSISTED PRODUCT</p>
-        <h3>
-          AI辅助产品实践
-          <br />
-          日租预约系统
-        </h3>
+        <p className="eyebrow">03 · 网站产品开发</p>
+        <h3>日租预约系统</h3>
         <p>
-          基于真实短租管理需求，从需求梳理、功能设计到测试上线，使用 Codex
-          辅助完成支持房源展示、在线预约及订单管理的网页产品。
+          基于真实短租管理需求，完成支持房源展示、在线预约及订单管理的网站产品。
         </p>
         <p className="booking-work">
-          需求梳理 · 产品设计 · AI辅助开发 · 功能测试 · 上线
+          房源展示 · 在线预约 · 订单管理 · 后台运营
         </p>
-        <a
-          href={BOOKING_PROJECT_URL}
-          target="_blank"
-          rel="noreferrer"
-          className="arrow-link"
-        >
-          访问在线项目 <span>↗</span>
-        </a>
+        <div className="aigc-actions">
+          <a href="/projects/booking" className="arrow-link">
+            查看项目详情 <span>→</span>
+          </a>
+          <a
+            href="https://7home-rent-reservation.netlify.app/"
+            target="_blank"
+            rel="noreferrer"
+            className="arrow-link"
+          >
+            访问在线项目 <span>↗</span>
+          </a>
+        </div>
       </div>
-      <div className="booking-gallery">
-        <ImageWithFallback
-          src="/assets/booking/booking-home.webp"
-          alt="日租预约系统客人端首页"
-          label="客人端首页"
-          className="booking-main"
-        />
-        <ImageWithFallback
-          src="/assets/booking/booking-form.webp"
-          alt="日租预约系统在线预约页面"
-          label="在线预约页面"
-          className="booking-small"
-        />
-        <ImageWithFallback
-          src="/assets/booking/booking-admin.webp"
-          alt="日租预约系统房东管理页面"
-          label="房东管理页面"
-          className="booking-small"
-        />
+      <div className="booking-gallery booking-gallery--single">
+        <a href="/projects/booking" aria-label="查看日租预约系统项目详情">
+          <ImageWithFallback
+            src="/assets/home/booking-home-cover.webp"
+            alt="日租预约系统首页"
+            label="日租预约系统首页"
+            className="booking-main"
+          />
+        </a>
       </div>
     </article>
   );
@@ -272,6 +283,7 @@ export function BookingProject() {
 
 export function ProjectCard({ project }: { project: Project }) {
   const direction = Number(project.number) % 2 === 0 ? ' is-reversed' : '';
+  const cover = homeProjectCovers[project.slug];
   return (
     <article className={`project-card${direction}`}>
       <div className="project-copy">
@@ -286,10 +298,13 @@ export function ProjectCard({ project }: { project: Project }) {
       </div>
       <a
         href={`/projects/${project.slug}`}
-        className="image-placeholder project-image"
+        className="project-image"
       >
-        <span>主视觉占位</span>
-        <small>{project.folder}</small>
+        {cover ? (
+          <img src={cover.src} alt={cover.alt} loading="lazy" />
+        ) : (
+          <span>项目主视觉</span>
+        )}
       </a>
     </article>
   );
@@ -1105,7 +1120,7 @@ export function ExternalProjectCard() {
 export function HomeContact() {
   return (
     <section className="contact home-contact wrap" id="contact" data-reveal>
-      <p className="eyebrow">05 · CONTACT</p>
+      <p className="eyebrow">05 · 联系我</p>
       <h2>联系我</h2>
       <p className="contact-intro">
         如果我的经历与你正在寻找的内容运营方向匹配，欢迎联系我。
@@ -1115,15 +1130,12 @@ export function HomeContact() {
         <span>新媒体 / 内容运营</span>
       </div>
       <div className="contact-details">
-        <p>邮箱：[placeholder]</p>
-        <p>手机号：[placeholder]</p>
+        <p>邮箱：814105079@qq.com</p>
+        <p>手机号：15988823587</p>
       </div>
       <div className="actions">
-        <a className="button button-dark" href={RESUME_PDF_PATH} download>
+        <a className="button button-dark" href={RESUME_PDF_PATH} download={RESUME_FILE_NAME}>
           下载简历 <span>↓</span>
-        </a>
-        <a className="button button-text" href="mailto:placeholder@example.com">
-          发送邮件 <span>↗</span>
         </a>
       </div>
     </section>
@@ -1140,15 +1152,12 @@ export function Contact({ language }: { language?: 'zh' } = {}) {
         <em>新媒体 / 内容运营</em>
       </h2>
       <div className="contact-details">
-        <p>{isChinese ? '邮箱' : 'Email'}：[placeholder]</p>
-        <p>手机号：[placeholder]</p>
+        <p>{isChinese ? '邮箱' : 'Email'}：814105079@qq.com</p>
+        <p>手机号：15988823587</p>
       </div>
       <div className="actions">
-        <a className="button button-dark" href={RESUME_PDF_PATH} download>
+        <a className="button button-dark" href={RESUME_PDF_PATH} download={RESUME_FILE_NAME}>
           下载简历 <span>↓</span>
-        </a>
-        <a className="button button-text" href="mailto:placeholder@example.com">
-          发送邮件 <span>↗</span>
         </a>
       </div>
     </section>

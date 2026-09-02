@@ -1,2 +1,2 @@
-// Keep this filename stable: replacing this one file with the final PDF updates every resume button.
-export const RESUME_PDF_PATH = '/resume/ma-tiantian-content-operation-resume.pdf';
+export const RESUME_FILE_NAME = '马甜甜_内容运营.pdf';
+export const RESUME_PDF_PATH = `/resume/${RESUME_FILE_NAME}`;
