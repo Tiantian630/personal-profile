@@ -526,41 +526,39 @@
 
 /* Booking case: scoped styles that extend the established Case Study language. */
 .booking-case .section-header { display:block; margin:0 0 38px; }
-.booking-case .section-header p { margin:0; }
-.booking-hero-intro { max-width:750px; margin:42px 0 0; color:#4a4a44; font-size:clamp(26px,3.2vw,36px); line-height:1.5; letter-spacing:-.04em; }
-.booking-overview { padding-top:88px; }
-.booking-overview-grid { display:grid; grid-template-columns:1.05fr .95fr; gap:clamp(42px,7vw,110px); max-width:1000px; }
-.booking-overview-grid > div > p:not(.booking-intro-label) { max-width:630px; margin:0 0 18px; font-size:21px; line-height:1.7; letter-spacing:-.025em; }
-.booking-intro-label { margin:0 0 18px; color:var(--accent); font-size:13px; font-weight:700; letter-spacing:.08em; }
-.booking-overview-grid dl { margin:0; border-top:1px solid var(--line); }
-.booking-overview-grid dl div { display:grid; grid-template-columns:88px minmax(0,1fr); gap:18px; padding:14px 0; border-bottom:1px solid var(--line); }
-.booking-overview-grid dt { color:var(--accent); font-size:12px; font-weight:700; letter-spacing:.08em; }
-.booking-overview-grid dd { margin:0; color:#45453f; }
-.booking-reading { max-width:790px; font-size:21px; line-height:1.7; letter-spacing:-.025em; }
+.booking-case .section-header p { display:flex; flex-direction:column; align-items:flex-start; gap:12px; margin:0; color:var(--ink); font-size:clamp(40px,3.5vw,48px); font-weight:560; letter-spacing:-.055em; line-height:1.1; }
+.booking-case .section-header p span { margin:0; color:var(--accent); font-size:13px; font-weight:700; letter-spacing:.1em; line-height:1; }
+.booking-hero { display:grid; grid-template-columns:.86fr 1.14fr; gap:clamp(40px,7vw,100px); align-items:center; padding-top:82px; padding-bottom:76px; }
+.booking-hero h1 { max-width:620px; margin-bottom:24px; font-size:clamp(48px,5.7vw,78px); }
+.booking-hero .case-company { margin:0; font-size:17px; }
+.booking-hero-intro { max-width:500px; margin:28px 0 0; color:#4c4c46; font-size:20px; line-height:1.7; letter-spacing:-.02em; }
+.booking-hero-intro p { margin:0; }
+.booking-hero-intro p + p { margin-top:14px; }
+.booking-hero .case-role { max-width:100%; margin-top:42px; }
+.booking-hero-image { min-height:0!important; aspect-ratio:4 / 3; border-color:color-mix(in srgb,var(--line) 72%,white); background:#efeee8; box-shadow:0 10px 26px rgb(37 38 34 / 3%); }
+.booking-hero-image img { object-fit:cover; }
+.booking-section-copy { max-width:790px; }
+.booking-section-copy h3,.booking-product-design > h3 { max-width:860px; margin:0 0 24px; font-size:clamp(29px,3vw,42px); font-weight:550; line-height:1.25; }
+.booking-reading { font-size:21px; line-height:1.7; letter-spacing:-.025em; }
 .booking-reading p { margin:0 0 18px; }
-.booking-editorial-list { max-width:1000px; border-top:1px solid var(--line); }
-.booking-editorial-list article { display:grid; grid-template-columns:104px minmax(0,1fr); gap:22px; padding:27px 0 30px; border-bottom:1px solid var(--line); }
-.booking-editorial-list article > span { color:var(--accent); font-size:13px; font-weight:700; letter-spacing:.1em; }
-.booking-editorial-list h3 { margin:0 0 9px; font-size:22px; font-weight:560; }
-.booking-editorial-list p { margin:0; color:#4c4c46; }
-.booking-development-copy { max-width:790px; }
-.booking-development-copy > p { margin:0 0 28px; font-size:21px; line-height:1.7; letter-spacing:-.025em; }
-.booking-development-copy ul { display:grid; gap:0; margin:0; padding:0; border-top:1px solid var(--line); list-style:none; }
-.booking-development-copy li { padding:15px 0; border-bottom:1px solid var(--line); color:#4c4c46; }
-.booking-evidence { display:grid; grid-template-columns:.9fr 1.1fr; gap:clamp(42px,7vw,94px); align-items:center; max-width:1000px; }
-.booking-evidence-image { min-height:0!important; aspect-ratio:4 / 3; padding:12px; border-color:color-mix(in srgb,var(--line) 72%,white); background:#efeee8; }
-.booking-evidence-image img { object-fit:contain; }
-.booking-feature-list h3 { margin:0 0 24px; font-size:clamp(29px,3vw,42px); font-weight:550; }
-.booking-feature-list article { padding:15px 0; border-top:1px solid var(--line); }
-.booking-feature-list article:last-of-type { border-bottom:1px solid var(--line); }
-.booking-feature-list h4 { margin:0 0 5px; font-size:16px; font-weight:650; }
-.booking-feature-list article p { margin:0; color:#4c4c46; font-size:14px; }
-.booking-external-link { margin-top:30px; }
+.booking-product-design { max-width:1000px; }
+.booking-flow-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:0 36px; border-top:1px solid var(--line); }
+.booking-flow-grid article { padding:25px 0 28px; border-bottom:1px solid var(--line); }
+.booking-flow-grid .article-index { margin-bottom:28px; }
+.booking-flow-grid h4 { margin:0 0 10px; font-size:22px; font-weight:560; }
+.booking-flow-grid article > p:last-child { max-width:420px; margin:0; color:#4c4c46; }
+.booking-showcase-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:42px 28px; }
+.booking-showcase-grid article:first-child { grid-column:1 / -1; }
+.booking-showcase-image { min-height:0!important; aspect-ratio:4 / 3; margin-bottom:20px; padding:10px; border-color:color-mix(in srgb,var(--line) 72%,white); background:#efeee8; }
+.booking-showcase-grid article:first-child .booking-showcase-image { aspect-ratio:16 / 9; }
+.booking-showcase-image img { object-fit:contain; }
+.booking-showcase-grid h3 { margin:0 0 10px; font-size:clamp(22px,2vw,28px); font-weight:560; }
+.booking-showcase-grid article > div > p { max-width:500px; margin:0; color:#4c4c46; }
 .booking-outcome { display:grid; grid-template-columns:1fr 2fr; gap:22px; align-items:start; padding:105px 0 8px; }
 .booking-outcome .section-header { margin:0; }
-.booking-outcome > div > p { max-width:720px; margin:0 0 28px; font-size:20px; line-height:1.7; }
-.booking-outcome ul { display:grid; gap:12px; margin:0; padding:0; list-style:none; }
-.booking-outcome li::before { content:'— '; color:var(--accent); }
+.booking-outcome > div { max-width:780px; }
+.booking-outcome > div > p { margin:0; font-size:20px; line-height:1.7; }
+.booking-outcome > div > p + p { margin-top:22px; }
 
 @media (max-width:760px) {
   .home-metrics .metric { gap:16px; }
@@ -568,14 +566,21 @@
   .aigc-project .secondary-projects .booking-project { grid-template-columns:1fr; gap:28px; padding:40px 0; }
   .aigc-project .secondary-projects .booking-copy .aigc-actions { margin-top:28px; }
   .aigc-project .secondary-projects .booking-gallery { width:100%; }
-  .booking-hero-intro { margin-top:32px; font-size:22px; }
-  .booking-hero-intro br { display:none; }
-  .booking-overview { padding-top:65px; }
-  .booking-overview-grid,.booking-evidence,.booking-outcome { grid-template-columns:1fr; gap:32px; }
-  .booking-overview-grid > div > p:not(.booking-intro-label),.booking-reading,.booking-development-copy > p { font-size:19px; }
-  .booking-editorial-list article { grid-template-columns:1fr; gap:8px; padding:21px 0 24px; }
-  .booking-editorial-list h3 { font-size:20px; }
-  .booking-evidence-image { padding:8px; }
+  .booking-hero { grid-template-columns:1fr; gap:30px; padding-top:68px; padding-bottom:54px; }
+  .booking-hero-image { order:-1; }
+  .booking-hero h1 { font-size:50px; }
+  .booking-hero-intro { max-width:100%; margin-top:24px; font-size:19px; line-height:1.7; }
+  .booking-hero .case-role { margin-top:34px; }
+  .booking-case .section-header { margin-bottom:28px; }
+  .booking-case .section-header p { gap:10px; font-size:38px; }
+  .booking-reading { font-size:19px; }
+  .booking-section-copy h3,.booking-product-design > h3 { margin-bottom:21px; font-size:28px; }
+  .booking-flow-grid,.booking-showcase-grid,.booking-outcome { grid-template-columns:1fr; gap:32px; }
+  .booking-flow-grid { gap:0; }
+  .booking-flow-grid article { padding:21px 0 24px; }
+  .booking-showcase-grid article:first-child { grid-column:auto; }
+  .booking-showcase-image { padding:8px; }
+  .booking-showcase-grid article:first-child .booking-showcase-image { aspect-ratio:4 / 3; }
   .booking-outcome { padding-top:70px; }
   .booking-outcome > div > p { font-size:19px; }
 }
